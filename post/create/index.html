@@ -4,51 +4,86 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Create Post</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+        <script type="module" src="/src/css/style.css"></script>
         <script type="module" src="/src/app.js"></script>
     </head>
-    <body>
-        <h1>Create Post</h1>
-        <a class="nav-style" href="/">Home</a>
-        <form id="create-post" name="createPost">
-            <label for="title">Title:</label>
-            <input
-                type="text"
-                id="title"
-                name="title"
-                placeholder="Enter the post title"
-                required
-                maxlength="60"
-            >
-            <label for="body">Body:</label>
-            <textarea
-                id="post-body"
-                name="body"
-                placeholder="Write your post content here"
-                required
-                maxlength="1000"
-            ></textarea>
-            <label for="image">Image URL:</label>
-            <input
-                type="url"
-                id="image"
-                name="media"
-                placeholder="Enter media URL (optional)"
-            >
-            <label for="image-alt">Image Alt Text:</label>
-            <input
-                type="text"
-                id="image-alt"
-                name="alt"
-                placeholder="Describe the media (optional)"
-            >
-            <label for="tags">Tags:</label>
-            <input
-                type="text"
-                id="tags"
-                name="tags"
-                placeholder="Enter tags, separated by commas (optional)"
-            >
-            <button type="submit" class="create-post-btn">Create Post</button>
-        </form>
+    <body class="bg-background font-sans">
+        <nav class="nav-container sticky top-0 z-50 bg-gradient-to-r from-primary to-secondary shadow-md mb-8">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-wrap items-center justify-between">
+                    <h1 class="text-white font-bold text-xl">Create Post</h1>
+                    <div class="navbar flex flex-wrap gap-2">
+                        <a class="nav-style px-4 py-2 rounded-full text-white hover:bg-primary/90" href="/">Home</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mx-auto max-w-[500px] px-4">
+            <form id="create-post" name="createPost" class="bg-white rounded-xl shadow-card p-6 space-y-4">
+                <div>
+                    <label for="title" class="block text-sm font-semibold mb-2">Title:</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Enter the post title"
+                        required
+                        maxlength="60"
+                        class="w-full px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    >
+                </div>
+
+                <div>
+                    <label for="body" class="block text-sm font-semibold mb-2">Body:</label>
+                    <textarea
+                        id="post-body"
+                        name="body"
+                        placeholder="Write your post content here"
+                        required
+                        maxlength="1000"
+                        class="w-full px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-primary/20 h-32"
+                    ></textarea>
+                </div>
+
+                <div>
+                    <label for="image" class="block text-sm font-semibold mb-2">Image URL:</label>
+                    <input
+                        type="url"
+                        id="image"
+                        name="media"
+                        placeholder="Enter media URL (optional)"
+                        class="w-full px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    >
+                </div>
+
+                <div>
+                    <label for="image-alt" class="block text-sm font-semibold mb-2">Image Alt Text:</label>
+                    <input
+                        type="text"
+                        id="image-alt"
+                        name="alt"
+                        placeholder="Describe the media (optional)"
+                        class="w-full px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    >
+                </div>
+
+                <div>
+                    <label for="tags" class="block text-sm font-semibold mb-2">Tags:</label>
+                    <input
+                        type="text"
+                        id="tags"
+                        name="tags"
+                        placeholder="Enter tags, separated by commas (optional)"
+                        class="w-full px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    >
+                </div>
+
+                <div class="flex justify-end">
+                    <button type="submit" class="nav-style px-6 py-2 rounded-full text-white bg-primary hover:bg-primary/90">Create Post</button>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

@@ -4,60 +4,97 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Noroff FED2 JS2 CA</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+        <script type="module" src="/src/css/style.css"></script>
         <script type="module" src="/src/app.js"></script>
     </head>
-    <body>
-        <h1>Profile</h1>
-        <section id="profile-header" class="profile-header">
-            <div id="profile-info">
-                <h1 id="welcome-message">Welcome back!</h1>
-                <img id="profile-avatar" src="/images/default-avatar.png" alt="User Avatar">
-                <h2 id="profile-username">Username</h2>
-                <p id="profile-bio">This is the user's bio.</p>
+    <body class="bg-background font-sans">
+        <!-- Navbar -->
+        <nav class="nav-container sticky top-0 z-50 bg-gradient-to-r from-primary to-secondary shadow-md mb-8">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-wrap items-center justify-between">
+                    <h1 class="text-white font-bold text-xl">Profile</h1>
+                    <div class="navbar flex flex-wrap gap-2">
+                        <a class="nav-style px-4 py-2 rounded-full text-white hover:bg-primary/90" href="/">Home</a>
+<a class="nav-style px-4 py-2 rounded-full text-white hover:bg-primary/90" href="/post/create/">Create Post</a>
+<button class="nav-style px-4 py-2 rounded-full text-white hover:bg-primary/90" id="update-profile-button">Update Profile</button>
+                        <button class="nav-style px-4 py-2 rounded-full text-white bg-red-500 hover:bg-red-600" id="logout-btn">Logout</button>
+                    </div>
+                </div>
             </div>
-            <div id="banner-image"></div>
-        </section>
-        <section id="profile-followers-section" class="profile-followers-section">
-            <button id="followers-count" class="nav-style">0 followers</button>
-            <button id="following-count" class="nav-style">0 following</button>
-        </section>
-        <div id="followers-modal" class="modal" style="display: none;">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3 id="modal-title"></h3>
-                <ul id="modal-list"></ul>
+        </nav>
+
+        <div class="notLoggedInNavbar nav-container sticky top-0 z-50 bg-gradient-to-r from-primary to-secondary shadow-md mb-8" style="display: none;">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-wrap items-center justify-between">
+                    <div class="navbar flex flex-wrap gap-2">
+                        <a href="/" id="home-button" class="nav-style px-4 py-2 rounded-full text-white bg-primary hover:bg-primary/90">Home</a>
+                        <button id="follow-button" class="nav-style px-4 py-2 rounded-full text-white bg-primary hover:bg-primary/90"></button>
+                    </div>
+                </div>
             </div>
         </div>
-        <section class="nav-container">
-            <div class="navbar">
-                <a class="nav-style" href="/">Home</a>
-                <a class="nav-style" href="/post/create/">Create Post</a>
-                <button class="nav-style" id="update-profile-button">Update Profile</button>
-                <button class="nav-style" id="logout-btn">Logout</button>
+
+        <section id="profile-header" class="profile-header mt-8 mb-8">
+            <div id="profile-info" class="bg-white rounded-xl shadow-card overflow-hidden max-w-[500px] mx-auto">
+                <div id="banner-image" class="h-32 bg-gradient-to-r from-primary to-secondary"></div>
+                <div class="p-6 text-center">
+                    <div class="relative -mt-16 mb-4">
+                        <img id="profile-avatar" src="/images/default-avatar.png" alt="User Avatar" 
+                             class="w-32 h-32 mx-auto rounded-full border-4 border-white shadow-lg object-cover">
+                    </div>
+                    <h1 id="welcome-message" class="text-2xl font-bold text-text-primary mb-2">Welcome back!</h1>
+                    <h2 id="profile-username" class="text-xl text-text-primary mb-2">Username</h2>
+                    <p id="profile-bio" class="text-text-secondary">This is the user's bio.</p>
+                </div>
             </div>
         </section>
-        <section id="update-profile-form" style="display: none;">
-            <form id="profile-update-form">
-                <label for="avatar-url">Avatar URL:</label>
-                <input type="url" id="avatar-url" placeholder="Enter new avatar URL">
-                <label for="banner-url">Banner URL:</label>
-                <input type="url" id="banner-url" placeholder="Enter new banner URL">
-                <label for="bio">Bio:</label>
-                <textarea id="bio" placeholder="Write a new bio..." maxlength="300"></textarea>
-                <div class="form-buttons">
-                    <button type="button" id="save-profile" class="nav-style">Update</button>
-                    <button type="button" id="cancel-update" class="nav-style">Cancel</button>
+        
+
+        <section id="profile-followers-section" class="profile-followers-section flex justify-center gap-4 mt-16 mb-6">
+            <button id="followers-count" class="nav-style px-4 py-2 rounded-full bg-white shadow-card hover:bg-gray-50">0 followers</button>
+            <button id="following-count" class="nav-style px-4 py-2 rounded-full bg-white shadow-card hover:bg-gray-50">0 following</button>
+        </section>
+
+        <section id="update-profile-form" class="container mx-auto max-w-[500px] px-4 mb-8" style="display: none;">
+            <form id="profile-update-form" class="bg-white rounded-xl shadow-card p-6 space-y-4">
+                <div>
+                    <label for="avatar-url" class="block text-sm font-semibold mb-2">Avatar URL:</label>
+                    <input type="url" id="avatar-url" placeholder="Enter new avatar URL"
+                           class="w-full px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-primary/20">
+                </div>
+                <div>
+                    <label for="banner-url" class="block text-sm font-semibold mb-2">Banner URL:</label>
+                    <input type="url" id="banner-url" placeholder="Enter new banner URL"
+                           class="w-full px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-primary/20">
+                </div>
+                <div>
+                    <label for="bio" class="block text-sm font-semibold mb-2">Bio:</label>
+                    <textarea id="bio" placeholder="Write a new bio..." maxlength="300"
+                              class="w-full px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-primary/20 h-32"></textarea>
+                </div>
+                <div class="form-buttons flex justify-end gap-2">
+                    <button type="button" id="save-profile" class="nav-style px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/90">Update</button>
+                    <button type="button" id="cancel-update" class="nav-style px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300">Cancel</button>
                 </div>
             </form>
         </section>
-        <div class="notLoggedInNavbar" style="display: none;">
-            <a href="/" id="home-button" class="nav-style">Home</a>
-            <button id="follow-button" class="nav-style"></button>
+
+        
+
+        <div class="max-w-[500px] mx-auto">
+            <h2 id="your-posts-heading" class="text-2xl font-bold text-center mb-8">Your Posts</h2>
         </div>
-        <h2 id="your-posts-heading">Your Posts</h2>
         <section class="feed-wrapper">
             <div id="profile-posts-container"></div>
         </section>
-    </form>
-</body>
+
+        <div id="followers-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+            <div class="modal-content bg-white rounded-xl p-6 max-w-md w-full mx-4">
+                <span class="close-modal text-2xl text-gray-500 hover:text-gray-700 cursor-pointer float-right">&times;</span>
+                <h3 id="modal-title" class="text-lg font-bold mb-4"></h3>
+                <ul id="modal-list" class="space-y-2"></ul>
+            </div>
+        </div>
+    </body>
 </html>
