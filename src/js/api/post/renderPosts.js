@@ -46,68 +46,53 @@ export function renderPosts(container, posts) {
           reaction.symbol === "❤️" && reaction.reactors?.includes(loggedInUser)
       );
       return `
-              <div class="post-card-wrapper">
-                  <div class="post-card">
-                      <a href="/profile/?username=${authorName}" class="profile-link">
-                          <div class="post-card-header">
-                              <img src="${authorAvatar}" alt="${authorName}'s avatar" class="post-card-avatar">
-                              <span class="post-card-username">${authorName}</span>
-                          </div>
-                      </a>
-                      <a href="/post/?id=${postId}" class="post-card-link">
-                          <div class="post-card-content">
-                              <h3 class="post-card-title">${post.title}</h3>
-                              ${
-                                post.media?.url
-                                  ? `
-                                  <img src="${post.media.url}" alt="${
-                                      post.media.alt || "Media"
-                                    }" class="post-card-image"
-                                    onerror="this.onerror=null;this.src='/images/default-avatar.png';" >
-                              `
-                                  : ""
-                              }
-                              <p class="post-card-body">${post.body || ""}</p>
-                          </div>
-                      </a>
-                      <div class="post-card-footer">
-                          ${tagsHTML}
-                          <span class="post-card-date">${postDate}</span>
-                          ${
-                            loggedInUser === authorName
-                              ? `
-                               <div class="post-card-actions">
-                                 <button onclick="window.location.href='/post/edit/?id=${post.id}'" class="post-card-edit">Edit</button>
-                                  <button class="post-card-delete" data-id="${post.id}">Delete</button>
-                              </div>
-                          `
-                              : ""
-                          }
-                          <div class="reaction-container">
-                              <button
-                                class="reaction-button ${
-                                  userHasReacted ? "reacted" : ""
-                                }"
-                                data-post-id="${postId}"
-                                data-symbol="❤️"
-                              >
-                                ❤️ ${totalReactions}
-                              </button>
-                              <button
-                                class="comment-button"
-                                data-post-id="${postId}"
-                              >
-                                💬 ${totalComments}
-                              </button>
-                          </div>
-                          <!-- Comment Section Placeholder -->
-                          <div class="comment-section" id="comments-${postId}" style="display: none;">
-                              <!-- Comments will be dynamically loaded here -->
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          `;
+    <div class="post-card-wrapper">
+        <div class="post-card bg-white shadow-card p-6 max-w-[500px] mx-auto">
+            <a href="/profile/?username=${authorName}" class="profile-link flex items-center gap-3 mb-4">
+                <div class="post-card-header flex items-center gap-3">
+                    <img src="${authorAvatar}" alt="${authorName}'s avatar" class="post-card-avatar w-10 h-10 rounded-full object-cover">
+                    <span class="post-card-username font-semibold text-text-primary">${authorName}</span>
+                </div>
+            </a>
+
+            <a href="/post/?id=${postId}" class="post-card-link">
+                <div class="post-card-content">
+                    <h3 class="post-card-title text-xl font-bold mb-4">${post.title}</h3>
+                    ${post.media?.url ? `
+                        <img src="${post.media.url}" alt="${post.media.alt || "Media"}" 
+                             class="post-card-image w-full h-full object-cover mb-4"
+                             onerror="this.onerror=null;this.src='/images/default-avatar.png';">
+                    ` : ''}
+                    <p class="post-card-body text-text-secondary mb-4">${post.body || ""}</p>
+                </div>
+            </a>
+
+            <div class="post-card-footer flex flex-wrap items-center justify-between gap-4">
+                ${tagsHTML}
+                <span class="post-card-date text-text-secondary">${postDate}</span>
+                ${loggedInUser === authorName ? `
+                    <div class="post-card-actions flex gap-2">
+                        <button onclick="window.location.href='/post/edit/?id=${post.id}'" class="post-card-edit px-4 py-2 text-primary hover:bg-primary/10">Edit</button>
+                        <button class="post-card-delete px-4 py-2 text-red-500 hover:bg-red-50" data-id="${post.id}">Delete</button>
+                    </div>
+                ` : ''}
+                <div class="reaction-container flex gap-4">
+                    <button class="reaction-button ${userHasReacted ? 'text-red-500' : 'text-text-secondary'} hover:text-red-500"
+                            data-post-id="${postId}"
+                            data-symbol="❤️">
+                        ❤️ ${totalReactions}
+                    </button>
+                    <button class="comment-button text-text-secondary hover:text-primary"
+                            data-post-id="${postId}">
+                        💬 ${totalComments}
+                    </button>
+                </div>
+                <div class="comment-section" id="comments-${postId}" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+`;
+
     })
     .join("");
 
