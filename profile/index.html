@@ -8,13 +8,13 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" src="/src/css/style.css"></script>
+    <link rel="stylesheet" href="/src/css/style.css" />
     <script type="module" src="/src/app.js"></script>
   </head>
   <body class="bg-background font-sans">
     <!-- Navbar -->
     <nav
-      class="nav-container sticky top-0 z-50 bg-gradient-to-r from-primary to-secondary shadow-md mb-8"
+      class="nav-container sticky top-0 z-50 bg-gradient-to-r from-primary to-secondary shadow-md"
     >
       <div class="container mx-auto px-4 py-4">
         <div class="flex flex-wrap items-center justify-between">
@@ -37,7 +37,7 @@
               Update Profile
             </button>
             <button
-              class="nav-style px-4 py-2 rounded-full text-white bg-red-500 hover:bg-red-600"
+              class="px-3 py-1.5 text-sm sm:px-5 sm:py-2 sm:text-base rounded-full text-white hover:bg-red-500 transition-colors"
               id="logout-btn"
             >
               Logout
@@ -48,7 +48,7 @@
     </nav>
 
     <div
-      class="notLoggedInNavbar nav-container sticky top-0 z-50 bg-gradient-to-r from-primary to-secondary shadow-md mb-8"
+      class="notLoggedInNavbar nav-container sticky top-0 z-50 bg-gradient-to-r from-primary to-secondary shadow-md"
       style="display: none"
     >
       <div class="container mx-auto px-4 py-4">
@@ -71,7 +71,7 @@
 
     <section
       id="profile-header"
-      class="absolute flex flex-col items-center justify-center w-full min-h-[400px] pt-24 z-10"
+      class="relative flex flex-col items-center justify-center w-full min-h-[400px] z-10 -mt-10"
     >
       <div id="banner-image" class="w-full h-80 bg-cover bg-center">
         <div
@@ -82,9 +82,10 @@
             id="profile-avatar"
             src="/images/default-avatar.png"
             alt="User Avatar"
-            class="w-12 h-12 rounded-full border-4 border-white border-2 border-black my-[10px] mx-auto mb-2"
+            class="w-28 h-28 rounded-full border-4 border-[#1a1a1a] my-[10px] mx-auto mb-2"
           />
-          <h1 id="welcome-message" class="text-3xl font-bold mb-6">
+
+          <h1 id="welcome-message" class="text-2xl font-bold mb-4">
             Welcome back!
           </h1>
           <h2 id="profile-username" class="text-2xl font-bold">Username</h2>
@@ -97,7 +98,7 @@
 
     <section
       id="profile-followers-section"
-      class="profile-followers-section flex justify-center gap-4 mt-8"
+      class="profile-followers-section flex justify-center gap-4"
     >
       <button
         id="followers-count"

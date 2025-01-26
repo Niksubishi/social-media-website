@@ -21,7 +21,12 @@ import { renderPosts } from "../../api/post/renderPosts.js";
  * @throws {Error} If fetching posts fails.
  * @returns {Promise<void>} Resolves when the posts have been loaded and rendered.
  */
-export async function loadPosts(container, fetchFunction, dropdown, options = {}) {
+export async function loadPosts(
+  container,
+  fetchFunction,
+  dropdown,
+  options = {}
+) {
   let currentPage = options.page || 1;
   const limit = options.limit || 12;
   let currentTag = options.tag || "all";
@@ -30,7 +35,13 @@ export async function loadPosts(container, fetchFunction, dropdown, options = {}
   async function fetchAndRender() {
     try {
       const tagToFetch = currentTag === "all" ? null : currentTag;
-      const result = await fetchFunction(limit, currentPage, tagToFetch, options.username, searchQuery);
+      const result = await fetchFunction(
+        limit,
+        currentPage,
+        tagToFetch,
+        options.username,
+        searchQuery
+      );
       const posts = Array.isArray(result.data) ? result.data : [result.data];
       if (!posts || posts.length === 0) {
         if (currentPage === 1) {
@@ -48,21 +59,24 @@ export async function loadPosts(container, fetchFunction, dropdown, options = {}
     }
   }
 
-  const loadMoreButton = document.querySelector(".load-more-btn") || document.createElement("button");
+  const loadMoreButton =
+    document.querySelector(".load-more-btn") ||
+    document.createElement("button");
   loadMoreButton.textContent = "Load More";
   loadMoreButton.classList.add(
     "load-more-btn",
     "px-6",
     "py-2",
     "rounded-full",
-    "bg-white",
+    "bg-[#2a2a2a]", //
+    "text-white",
     "shadow-card",
-    "hover:bg-gray-50",
+    "hover:bg-gray-800",
     "mx-auto",
     "block",
-    "mt-8",
+    "mt-2",
     "mb-16"
-);
+  );
 
   loadMoreButton.removeEventListener("click", fetchAndRender);
   loadMoreButton.addEventListener("click", fetchAndRender);
