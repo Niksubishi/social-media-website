@@ -1,43 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Noroff FED2 JS2 CA</title>
-      <script type="module" crossorigin src="./assets/app-CmBtm0w2.js"></script>
-      <link rel="stylesheet" crossorigin href="./assets/app-DexvFk_b.css">
-    </head>
-    <body>
-        <h1>HOME</h1>
-        <section class="nav-container">
-            <div class="navbar">
-                <a class="nav-style" href="/profile/">My Profile</a>
-                <a class="nav-style" href="/post/create/">Create Post</a>
-                <a class="nav-style" href="/auth/login/">Login</a>
-                <a class="nav-style" href="/auth/register/">Register</a>
-                <button class="nav-style" id="logout-btn">Logout</button>
-            </div>
-        </section>
-        <section class="feed-controls">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noroff FED2 JS2 CA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/app-C1fzTbsN.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/app-D9zoAyvP.css">
+  </head>
+  <body class="bg-background font-sans">
+    <nav
+      class="sticky top-0 bg-gradient-to-r from-primary to-secondary shadow-md"
+    >
+      <div class="container mx-auto px-4 py-4">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center gap-4"
+        >
+          <h1 class="text-white font-bold text-xl">
+            SOCIAL<span class="text-white">FEED</span>
+          </h1>
+          <div class="flex flex-wrap justify-center gap-2">
+            <a
+              class="px-3 py-1.5 text-sm sm:px-5 sm:py-2 sm:text-base rounded-full text-white hover:bg-white hover:text-primary transition-colors"
+              href="/profile/"
+              >Profile</a
+            >
+            <a
+              class="px-3 py-1.5 text-sm sm:px-5 sm:py-2 sm:text-base rounded-full text-white hover:bg-white hover:text-primary transition-colors"
+              href="/post/create/"
+              >Create</a
+            >
+
+            <button
+              class="px-3 py-1.5 text-sm sm:px-5 sm:py-2 sm:text-base rounded-full text-white hover:bg-red-500 transition-colors"
+              id="logout-btn"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-6">
+      <div
+        class="max-w-[500px] mx-auto bg-[#2a2a2a] rounded-xl shadow-card p-6"
+      >
+        <div class="flex flex-col gap-4">
           <div>
-            <label for="search-input" class="seach-label">Search:</label>
-            <input
+            <label
+              for="search-input"
+              class="block text-sm font-semibold text-text-primary mb-2"
+              >Search Posts</label
+            >
+            <div class="relative">
+              <input
                 type="text"
                 id="search-input"
-                placeholder="Search posts by title..."
-                class="search-bar"
-            >
-        </div>
-            <div>
-                <label for="tag-filter" class="label-filter">Choose community:</label>
-                <select id="tag-filter">
-                    <option value="all" selected>General</option>
-                    <option value="PetPals">PetPals</option>
-                </select>
+                placeholder="Search by title..."
+                class="w-full px-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              />
             </div>
-        </section>
-        <section class="feed-wrapper">
-            <div id="feed-container"></div>
-        </section>
-    </body>
+          </div>
+          <div>
+            <label
+              for="tag-filter"
+              class="block text-sm font-semibold text-text-primary mb-2"
+              >Choose Community</label
+            >
+            <select
+              id="tag-filter"
+              class="w-full px-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+            >
+              <option value="all" selected>General</option>
+              <option value="PetPals">PetPals</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto">
+      <div class="feed-wrapper">
+        <div id="feed-container" class="flex flex-col items-center"></div>
+      </div>
+    </div>
+  </body>
 </html>
