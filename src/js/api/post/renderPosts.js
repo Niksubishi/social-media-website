@@ -47,7 +47,7 @@ export function renderPosts(container, posts) {
       );
       return `
     <div class="post-card-wrapper">
-        <div class="post-card bg-white shadow-card p-6 max-w-[500px] mx-auto">
+        <div class="post-card shadow-card p-6 max-w-[500px] mx-auto">
             <a href="/profile/?username=${authorName}" class="profile-link flex items-center gap-3 mb-4">
                 <div class="post-card-header flex items-center gap-3">
                     <img src="${authorAvatar}" alt="${authorName}'s avatar" class="post-card-avatar w-10 h-10 rounded-full object-cover">
@@ -80,7 +80,7 @@ export function renderPosts(container, posts) {
                     <button class="reaction-button ${userHasReacted ? 'text-red-500' : 'text-text-secondary'} hover:text-red-500"
                             data-post-id="${postId}"
                             data-symbol="❤️">
-                        ❤️ ${totalReactions}
+                        ♥️ ${totalReactions}
                     </button>
                     <button class="comment-button text-text-secondary hover:text-primary"
                             data-post-id="${postId}">

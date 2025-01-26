@@ -4,8 +4,8 @@
 
 @layer components {
   .post-card {
-    @apply bg-white shadow-card p-5 w-[500px] mx-auto transition-all hover:-translate-y-1 hover:shadow-lg mb-6;
-}
+    @apply bg-[#2a2a2a] shadow-card p-5 w-[500px] mx-auto transition-all hover:-translate-y-1 hover:shadow-lg mb-6 rounded-xl;
+  }
 
   .post-card-header {
     @apply flex items-center gap-3 mb-4;
@@ -21,6 +21,9 @@
 
   .post-card-image {
     @apply w-full h-auto object-contain my-3;
-}
-}
+  }
 
+  .post-card-title {
+    @apply text-white;
+  }
+}

@@ -6,10 +6,10 @@ export default {
       colors: {
         primary: "#4f46e5",
         secondary: "#64748b",
-        background: "#e7e7e7",
-        "text-primary": "#1e293b",
-        "text-secondary": "#475569",
-      },
+        background: "#1a1a1a",  
+        "text-primary": "#ffffff",  
+        "text-secondary": "#ffffff",  
+    },
       boxShadow: {
         card: "0 4px 8px rgb(0 0 0 / 0.1)",
       },
