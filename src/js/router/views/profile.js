@@ -1,5 +1,6 @@
 import { authGuard } from "../../utilities/authGuard.js";
 import { setLogoutListener } from "../../ui/global/logout.js";
+import { initializeNavigation } from "../../ui/global/navigation.js";
 import { loadPosts } from "../../ui/post/loadPosts.js";
 import { readPostsByUser } from "../../api/post/read.js";
 import { initializeReactionButtons } from "../../api/post/react.js"; // Import reaction initializer
@@ -12,6 +13,7 @@ import { initializeProfileFollowersModal } from "../../ui/profile/profileFollowe
 import { initializeCommentButtons } from "../../api/post/comment.js"; // Import comment initializer
 
 authGuard();
+initializeNavigation();
 setLogoutListener();
 initializeBackToTop();
 

@@ -4,7 +4,7 @@ import { createPost } from "../../api/post/create.js";
  *
  * - Prevents the default form submission behavior.
  * - Extracts and validates user input from the form fields.
- * - Constructs the post data object, including optional media and tags.
+ * - Constructs the post data object, including optional media.
  * - Sends the data to the `createPost` API function.
  * - Displays success or error messages to the user.
  * - Redirects to the homepage on successful post creation.
@@ -22,12 +22,6 @@ export async function onCreatePost(event) {
   const body = formData.get("body").trim();
   const mediaUrl = formData.get("media").trim();
   const mediaAlt = formData.get("alt").trim();
-  const tags = formData
-    .get("tags")
-    .trim()
-    .split(",")
-    .map((tag) => tag.trim())
-    .filter(Boolean);
   if (!title || !body) {
     alert("Title and body are required fields.");
     return;
@@ -36,7 +30,6 @@ export async function onCreatePost(event) {
     title,
     body,
     media: mediaUrl ? { url: mediaUrl, alt: mediaAlt } : undefined,
-    tags,
   };
   try {
     const response = await createPost(postData);

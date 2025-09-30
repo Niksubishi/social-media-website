@@ -4,7 +4,7 @@ import { updatePost } from "../../api/post/update.js";
  *
  * - Prevents the default form submission behavior.
  * - Confirms the user's intent to update the post.
- * - Collects form data and constructs the post object, including optional media and tags.
+ * - Collects form data and constructs the post object, including optional media.
  * - Sends the updated post data to the `updatePost` API function.
  * - Redirects the user to the updated post page upon success.
  * - Logs an error if the update fails.
@@ -27,12 +27,6 @@ export async function onUpdatePost(event) {
   const post = {
     title: formData.get("title"),
     body: formData.get("body"),
-    tags: formData.get("tags")
-      ? formData
-          .get("tags")
-          .split(",")
-          .map((tag) => tag.trim())
-      : [],
     media: mediaUrl
       ? {
           url: mediaUrl,

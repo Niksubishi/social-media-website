@@ -8,7 +8,7 @@
  * @description
  * - Converts post objects into structured HTML cards displaying:
  *   - Author information (avatar and name).
- *   - Post metadata (title, body, tags, reactions, and comments).
+ *   - Post metadata (title, body, reactions, and comments).
  *   - Media content if available.
  *   - Reaction and comment buttons with counts.
  * - Includes action buttons (Edit/Delete) for the post author.
@@ -26,17 +26,6 @@ export function renderPosts(container, posts) {
       const postDate = post.created
         ? new Date(post.created).toLocaleDateString()
         : "Unknown date";
-      const tagsHTML =
-        post.tags && post.tags.length
-          ? `
-              <div class="post-card-tags">
-                  <span class="post-card-tags-label">Tags:</span>
-                  <span class="post-card-tag-list">${post.tags.join(
-                    ", "
-                  )}</span>
-              </div>
-          `
-          : "";
 
       const totalReactions =
         post.reactions?.reduce((sum, reaction) => sum + reaction.count, 0) || 0;
@@ -71,7 +60,6 @@ export function renderPosts(container, posts) {
                           </div>
                       </a>
                       <div class="post-card-footer">
-                          ${tagsHTML}
                           <span class="post-card-date">${postDate}</span>
                           ${
                             loggedInUser === authorName

@@ -30,13 +30,34 @@
                     title="Please enter a valid noroff.no or stud.noroff.no address"
                 >
                 <label for="password">Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    required
-                    minlength="8"
-                >
+                <div class="password-field">
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        required
+                        minlength="8"
+                    >
+                    <button type="button" class="password-toggle" data-target="password">
+                        <span class="show-text">👁️</span>
+                        <span class="hide-text" style="display: none;">🙈</span>
+                    </button>
+                </div>
+                <label for="password-repeat">Repeat Password</label>
+                <div class="password-field">
+                    <input
+                        type="password"
+                        name="passwordRepeat"
+                        id="password-repeat"
+                        required
+                        minlength="8"
+                    >
+                    <button type="button" class="password-toggle" data-target="password-repeat">
+                        <span class="show-text">👁️</span>
+                        <span class="hide-text" style="display: none;">🙈</span>
+                    </button>
+                </div>
+                <div id="password-mismatch-error">Passwords do not match</div>
             </div>
             <div class="login-register-links">
                 <a href="/auth/login/">Login</a>

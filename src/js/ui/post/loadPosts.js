@@ -21,7 +21,7 @@ import { renderPosts } from "../../api/post/renderPosts.js";
  * @throws {Error} If fetching posts fails.
  * @returns {Promise<void>} Resolves when the posts have been loaded and rendered.
  */
-export async function loadPosts(container, fetchFunction, dropdown, options = {}) {
+export async function loadPosts(container, fetchFunction, dropdown = null, options = {}) {
   let currentPage = options.page || 1;
   const limit = options.limit || 12;
   let currentTag = options.tag || "all";

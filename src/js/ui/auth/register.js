@@ -1,8 +1,11 @@
 import { register } from "../../api/auth/register"; // Adjust import path as needed
+import { validatePasswordMatch } from "./passwordUtils.js";
+
 /**
  * Handles the user registration process.
  *
  * - Prevents the default form submission behavior.
+ * - Validates that passwords match before submission.
  * - Collects user input (name, email, password) from the registration form.
  * - Sends a registration request to the server using the `register` function.
  * - Displays success or failure messages to the user.
@@ -18,7 +21,14 @@ export async function onRegister(event) {
   const name = form.name.value;
   const email = form.email.value;
   const password = form.password.value;
+  const passwordRepeat = form.passwordRepeat.value;
   const button = form.querySelector("button");
+
+  // Validate passwords match
+  if (!validatePasswordMatch('password', 'password-repeat', 'password-mismatch-error')) {
+    return; // Stop submission if passwords don't match
+  }
+
   try {
     button.disabled = true;
     button.textContent = "Registering...";

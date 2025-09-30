@@ -1,4 +1,7 @@
 import { onLogin } from "../../ui/auth/login.js";
+import { initializePasswordToggles } from "../../ui/auth/passwordUtils.js";
+import { initializeNavigation } from "../../ui/global/navigation.js";
+
 /**
  * Handles the login form submission event.
  *
@@ -10,6 +13,11 @@ import { onLogin } from "../../ui/auth/login.js";
  * @listens submit - Listens for the form's `submit` event.
  * @param {Event} event - The event object triggered by the form submission.
  */
+
+// Initialize navigation and password toggle functionality
+initializeNavigation();
+initializePasswordToggles();
+
 const form = document.forms.login;
 const loginErrorElement = document.createElement("div");
 loginErrorElement.id = "login-error";

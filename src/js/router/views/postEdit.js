@@ -1,6 +1,9 @@
 import { authGuard } from "../../utilities/authGuard";
 import { readPost } from "../../api/post/read.js";
 import { onUpdatePost } from "../../ui/post/update.js";
+import { initializeNavigation } from "../../ui/global/navigation.js";
+import { setLogoutListener } from "../../ui/global/logout.js";
+
 /**
  * Initializes the post editing view.
  *
@@ -15,6 +18,8 @@ import { onUpdatePost } from "../../ui/post/update.js";
  */
 export default async function postEditView() {
   authGuard();
+  initializeNavigation();
+  setLogoutListener();
   const postId = new URLSearchParams(window.location.search).get("id");
   const form = document.querySelector("#edit-post");
   if (!form || !postId) return;

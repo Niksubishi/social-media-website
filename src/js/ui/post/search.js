@@ -16,7 +16,7 @@ import { readPosts } from "../../api/post/read.js";
  * @param {HTMLElement} [dropdown] - An optional dropdown element for filtering tags.
  * @returns {void}
  */
-export function initializeSearch(searchInput, container, dropdown) {
+export function initializeSearch(searchInput, container, dropdown = null) {
   let searchQuery = "";
   searchInput.addEventListener("input", async (event) => {
     searchQuery = event.target.value.trim();

@@ -13,6 +13,8 @@ import { API_AUTH_LOGIN } from "../constants.js";
  */
 export async function login({ email, password }) {
   try {
+    console.log("Attempting login to:", API_AUTH_LOGIN);
+
     const response = await fetch(API_AUTH_LOGIN, {
       method: "POST",
       headers: {
@@ -20,15 +22,34 @@ export async function login({ email, password }) {
       },
       body: JSON.stringify({ email, password }),
     });
-    const json = await response.json();
+
+    console.log("Response status:", response.status);
+    console.log("Response ok:", response.ok);
+
     if (!response.ok) {
-      throw new Error(
-        json.message || "Login failed. Please check your credentials."
-      );
+      let errorMessage = "Login failed. Please check your credentials.";
+      try {
+        const json = await response.json();
+        errorMessage = json.errors?.[0]?.message || json.message || errorMessage;
+      } catch (parseError) {
+        console.warn("Could not parse error response:", parseError);
+      }
+      throw new Error(errorMessage);
     }
+
+    const json = await response.json();
+    console.log("Login successful");
     return json;
   } catch (error) {
     console.error("Error in login:", error);
+
+    // Provide more specific error messages
+    if (error.name === 'TypeError' && error.message.includes('Load failed')) {
+      throw new Error("Network error. Please check your internet connection and try again.");
+    } else if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+      throw new Error("Unable to connect to server. Please try again later.");
+    }
+
     throw error;
   }
 }
