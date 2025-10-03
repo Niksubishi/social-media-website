@@ -1,1 +1,0 @@
-const t="175b27d2-e7de-4e22-bffc-76b4d3897a54",s="https://v2.api.noroff.dev",A=`${s}/auth`,I=`${A}/login`,_=`${A}/register`,o=`${s}/social`,c=`${o}/posts`,a=`${o}/profiles`;export{c as A,I as a,_ as b,a as c,t as d};

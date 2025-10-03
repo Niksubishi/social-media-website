@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Noroff FED2 JS2 CA</title>
+        <link rel="stylesheet" href="/src/css/tailwind.css">
         <script type="module" src="/src/app.js"></script>
     </head>
-    <body>
-        <h1>Post Page</h1>
-        <a class="nav-style" href="/">Home</a>
-        <section class="feed-wrapper">
+    <body class="bg-neutral-50 text-neutral-900 font-inter leading-relaxed">
+        <h1 class="text-center text-4xl font-extrabold mb-8 mt-8 bg-gradient-to-br from-primary-blue to-secondary-blue bg-clip-text text-transparent">Post Page</h1>
+        <a class="inline-block text-sm font-medium text-neutral-600 px-6 py-3 rounded-lg transition-all duration-200 hover:text-primary-blue hover:bg-primary-blue-light mb-6 ml-4" href="/">Home</a>
+        <section class="flex flex-col items-center max-w-6xl mx-auto px-4">
             <div id="post-container"></div>
         </section>
     </body>
