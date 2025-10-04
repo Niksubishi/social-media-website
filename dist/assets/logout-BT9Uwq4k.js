@@ -1,0 +1,1 @@
+function o(){localStorage.removeItem("token"),localStorage.removeItem("username"),window.dispatchEvent(new CustomEvent("userLoggedOut"))}async function e(){document.querySelector("#logout-btn").addEventListener("click",()=>{o(),window.location.href="/auth/login/"})}export{e as s};

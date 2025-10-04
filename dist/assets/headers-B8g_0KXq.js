@@ -1,0 +1,1 @@
+import{e as a}from"./constants-rqNHC8Ty.js";function i({apiKey:t=!0,authToken:o=!0,contentType:n=!0}={}){const e=new Headers;if(t&&e.append("X-Noroff-API-Key",a),o){const r=typeof localStorage<"u"&&localStorage.getItem("token")||"token";e.append("Authorization",`Bearer ${r}`)}return n&&e.append("Content-Type","application/json"),e}export{i as h};
